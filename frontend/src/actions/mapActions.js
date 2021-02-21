@@ -1,5 +1,8 @@
 import {Threebox} from 'threebox-plugin';
 
+import Drivethru from 'assets/scenes/drivethru.glb';
+import Walkthru from 'assets/scenes/walkthru.glb';
+
 export const loadLocations = (map, sites) => {
   console.log('LOADING MAP');
   const driveThrus = [], walkThrus = [];
@@ -28,7 +31,7 @@ export const loadLocations = (map, sites) => {
       );
 
       var options = {
-        obj: 'scenes/drivethru.glb',
+        obj: Drivethru,//'scenes/drivethru.glb',
         type: 'gltf',
         scale: 50,
         units: 'meters',
@@ -63,7 +66,7 @@ export const loadLocations = (map, sites) => {
       );
 
       var options = {
-        obj: 'scenes/walkthru.glb',
+        obj: Walkthru,//'scenes/walkthru.glb',
         type: 'gltf',
         scale: 30,
         units: 'meters',
