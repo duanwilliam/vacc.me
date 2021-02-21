@@ -2,9 +2,7 @@ import {Threebox} from 'threebox-plugin';
 
 export const loadLocations = (map, sites) => {
   console.log('LOADING MAP');
-  //console.log(sites);
-  const driveThrus = [];
-  const walkThrus = [];
+  const driveThrus = [], walkThrus = [];
   const siteValues = Object.values(sites);
   for (let i = 0; i < siteValues.length; i ++) {
     const site = siteValues[i];

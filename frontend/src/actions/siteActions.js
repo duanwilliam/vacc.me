@@ -2,7 +2,7 @@ import { Actions } from 'actions';
 
 export const getSites = (items) => async dispatch => {
   console.log('GETTING SITES');
-  const response = await fetch('http://localhost:3000/api/sites/getSites'/* getSites api route */, {
+  const response = await fetch('https://agile-retreat-84346.herokuapp.com/api/sites/getSites'/* getSites api route */, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -11,7 +11,7 @@ export const getSites = (items) => async dispatch => {
   });
 
   const data = await response.json();
-  //console.log(data);
+  //console.log("response", data);
   if (!data) throw new Error('Empty response from server');
   if (data.error) throw new Error(data.error.message);
 
@@ -34,7 +34,7 @@ export const getSites = (items) => async dispatch => {
 export const filterSites = (filters) => async dispatch => {
   console.log('FILTERING SITES');
   console.log(filters);
-  const response = await fetch('http://localhost:3000/api/sites/filterSites'/* filterSites api route */, {
+  const response = await fetch('https://agile-retreat-84346.herokuapp.com/api/sites/filterSites'/* filterSites api route */, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

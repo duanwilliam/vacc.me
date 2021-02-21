@@ -27,7 +27,7 @@ const MapPage = (props) => {
   const showDrawer = () => setDrawerVisible(true);
   const hideDrawer = () => setDrawerVisible(false);
 
-  const onMapLoad = (map) => {  
+  const onMapLoad = (map) => {
     window.map = map;
     loadLocations(map, sites);
   }
@@ -52,7 +52,6 @@ const mapStateToProps = (state) => {
   sites = state.sites.sites;
 
   return {
-    //filtered: state.sites.filtered,
     sites: state.sites.sites
   }
 }
