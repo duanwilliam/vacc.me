@@ -11,7 +11,6 @@ export const getSites = (items) => async dispatch => {
   });
 
   const data = await response.json();
-  //console.log("response", data);
   if (!data) throw new Error('Empty response from server');
   if (data.error) throw new Error(data.error.message);
 
@@ -33,7 +32,6 @@ export const getSites = (items) => async dispatch => {
 
 export const filterSites = (filters) => async dispatch => {
   console.log('FILTERING SITES');
-  console.log(filters);
   const response = await fetch('https://agile-retreat-84346.herokuapp.com/api/sites/filterSites'/* filterSites api route */, {
     method: 'POST',
     headers: {
@@ -41,12 +39,14 @@ export const filterSites = (filters) => async dispatch => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      filters: filters
+      filters: {
+        ...filters,
+        time: filters.time ? filters.time.hours() + filters.time.minutes()/60 : ''
+      }
     }),
   });
 
   const data = await response.json();
-  console.log(data);
   if (!data) throw new Error('Empty response from server');
   if (data.error) throw new Error(data.error.message);
 

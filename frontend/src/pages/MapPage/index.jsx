@@ -33,7 +33,6 @@ const MapPage = (props) => {
   }
 
   const sendForm = (filters) => {
-    console.log(filters);
     props.filterSites(filters);
     showSidebar();
   }

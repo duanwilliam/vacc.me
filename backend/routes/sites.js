@@ -23,13 +23,10 @@ router.get('/getSites', async (req, res) => {
 });
 
 router.post('/filterSites', async (req ,res) => {
-  console.log(req.body);
   const collRef = database.ref('sites');
   collRef.once("value").then((coll) => {
     let {dow, time, driveThru, walkThru} = req.body.filters;
-    if(dow) dow = {0: 'm', 1: 'tu', 2: 'w', 3: 'th', 4: 'f', 5: 'sa', 6: 'su'}[dow];
-    if(time) time = time.hours() + time.minutes()/60;
-
+    if(dow) dow = numToDow[dow];
     let sites = [];
     coll.val().forEach((doc) => {
       sites.push(doc);
@@ -44,16 +41,20 @@ router.post('/filterSites', async (req ,res) => {
       if(dow) {
         if(!(dow in doc.times)) continue; // not offered on day 
       }
-      if(time) {
-        const [ti, tf] = doc.times[dow];
-        if(ti>time || time>tf) { // not offered at time
-          if(Math.min(Math.abs(time-ti), Math.abs(time-tf)) <= 1) {
-            almost.push(doc); // near miss - will add if there's room
+      if(time != '') {
+        let failed = false;
+        const days = dow ? [dow] : Object.keys(doc.times);
+        for(let day of days) {
+          const [ti, tf] = doc.times[day];
+          if(ti>time || time>tf) { // not offered at time
+            if(Math.min(Math.abs(time-ti), Math.abs(time-tf)) <= 1) {
+              almost.push(doc); // near miss - will add if there's room
+            }
+            failed = true;
           }
-          continue;
         }
+        if(failed) continue;
       }
-      
       // matched all filters
       filtered.push(doc);
     }
@@ -66,12 +67,13 @@ router.post('/filterSites', async (req ,res) => {
         filtered.push(doc);
       }
     }
-
     res.status(200).send(filtered);
   })
 });
   
 module.exports = router;
+
+const numToDow = {0: 'm', 1: 'tu', 2: 'w', 3: 'th', 4: 'f', 5: 'sa', 6: 'su'};
 
 // randomize returned values. taken from https://stackoverflow.com/a/19270021
 const getRandom = (arr, n) => {
