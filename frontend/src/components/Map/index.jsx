@@ -4,6 +4,10 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 import './index.scss';
 
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 const Mapbox = ReactMapboxGl({
   accessToken:
     'pk.eyJ1IjoidnNjb2RldiIsImEiOiJja2xkYWpmZXgxc25hMnBtdnI3ZzE2ampzIn0.Y4ZL-wJ-AQ29QjrJE4t_sA'
