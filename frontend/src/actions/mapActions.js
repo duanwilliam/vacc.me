@@ -1,7 +1,7 @@
 import {Threebox} from 'threebox-plugin';
 
-import Drivethru from 'assets/scenes/drivethru.glb';
-import Walkthru from 'assets/scenes/walkthru.glb';
+import Drivethru from 'assets/scenes/drivethru2.glb';
+import Walkthru from 'assets/scenes/walkthru2.glb';
 
 var m='';
 
