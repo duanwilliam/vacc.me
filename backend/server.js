@@ -13,7 +13,7 @@ app.use(cors());
 app.get('/', (req, res) => res.send('vacc.me'));
 
 // routes
-app.use('/api/locations', require('./routes/locations'));
+app.use('/api/sites', require('./routes/sites'));
 
 app.listen(port, async () => {
   console.log(`Starting server on port ${port}`);

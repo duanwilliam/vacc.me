@@ -1,0 +1,10 @@
+@import '~antd/dist/antd.css';
+@import './reset.scss';
+@import './vars.scss';
+
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  color: $black;
+  overflow: hidden;
+}

@@ -9,9 +9,9 @@ admin.initializeApp({
   clientEmail: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
   privateKey: process.env.FIREBASE_ADMIN_PRIVATE_KEY.replace(/\\n/g, '\n')
   }),
-  databaseURL: process.env.FIREBASE_ADMIN_DATABASE_URL
+  databaseURL: process.env.FIREBASE_ADMIN_DATABASE_URL2
 });
 
 module.exports = {
-  database: admin.firestore()
+  database: admin.database()//firestore()
 }
