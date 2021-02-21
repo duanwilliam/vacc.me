@@ -3,6 +3,8 @@ import {Threebox} from 'threebox-plugin';
 import Drivethru from 'assets/scenes/drivethru.glb';
 import Walkthru from 'assets/scenes/walkthru.glb';
 
+var m='';
+
 export const loadLocations = (map, sites) => {
   console.log('LOADING MAP');
   const driveThrus = [], walkThrus = [];
