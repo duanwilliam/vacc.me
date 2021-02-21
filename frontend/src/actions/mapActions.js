@@ -7,7 +7,7 @@ export const loadLocations = (map, sites) => {
   console.log('LOADING MAP');
   const driveThrus = [], walkThrus = [];
   const siteValues = Object.values(sites);
-  for (let i = 0; i < siteValues.length; i ++) {
+  for (let i=0; i<siteValues.length; ++i) {
     const site = siteValues[i];
     if (site.type) {
       driveThrus.push(site);
@@ -31,7 +31,7 @@ export const loadLocations = (map, sites) => {
       );
 
       var options = {
-        obj: Drivethru,//'scenes/drivethru.glb',
+        obj: Drivethru,
         type: 'gltf',
         scale: 50,
         units: 'meters',
@@ -39,7 +39,7 @@ export const loadLocations = (map, sites) => {
         rotation: { x: 180, y: 0, z: 180 }
       }
 
-      for (let i = 0; i < driveThrus.length; i ++) {
+      for (let i=0; i<driveThrus.length; ++i) {
         const driveThru = driveThrus[i];
         window.tb.loadObj(options, function (model) {
           car = model.setCoords([driveThru.long, driveThru.lat]);
@@ -66,7 +66,7 @@ export const loadLocations = (map, sites) => {
       );
 
       var options = {
-        obj: Walkthru,//'scenes/walkthru.glb',
+        obj: Walkthru,
         type: 'gltf',
         scale: 30,
         units: 'meters',
@@ -74,7 +74,7 @@ export const loadLocations = (map, sites) => {
         rotation: { x: 180, y: 0, z: 180 }
       }
 
-      for (let i = 0; i < walkThrus.length; i ++) {
+      for (let i=0; i<walkThrus.length; ++i) {
         const walkThru = walkThrus[i];
         window.tb.loadObj(options, function (model) {
           person = model.setCoords([walkThru.long, walkThru.lat]);
