@@ -12,7 +12,6 @@
     },
     "devDependencies": {},
     "scripts": {
-      "build": "cd frontend && npm run build",
       "start": "cd backend && node server.js"
     },
     "author": "",
