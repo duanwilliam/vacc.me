@@ -18,7 +18,8 @@
     "redux-thunk": "^2.3.0",
     "three": "^0.125.2",
     "threebox": "^0.1.5",
-    "threebox-plugin": "^2.1.9"
+    "threebox-plugin": "^2.1.9",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
